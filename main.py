@@ -16,7 +16,9 @@ graph_positions = {city: (coord[1], coord[0]) for city, coord in city_positions.
 
 plt.figure(figsize=(10, 8))
 nx.draw(G_ukraine, pos=graph_positions, with_labels=True, node_color='orange', node_size=2000, font_size=12, font_weight='bold')
-plt.title("Граф Основних Міст України (Схематична Карта)")
+edge_weights = nx.get_edge_attributes(G_ukraine, 'weight')
+nx.draw_networkx_edge_labels(G_ukraine, pos=graph_positions, edge_labels=edge_weights)
+plt.title("Граф Основних Міст України")
 plt.show()
 
 # Аналіз основних характеристик графа
